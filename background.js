@@ -23,22 +23,29 @@ function getPlantTypeForUrl(url) {
 
 // Initialize garden storage and set up alarms
 chrome.runtime.onInstalled.addListener(async () => {
-  console.log('Tab Garden extension installed');
-  
-  // Initialize empty garden object in storage
-  await chrome.storage.local.set({ garden: {} });
-  
-  // Create alarm for updating wilting state every hour
-  chrome.alarms.create('updateWiltingState', { 
-    delayInMinutes: 60, 
-    periodInMinutes: 60 
-  });
-  
-  // Create alarm for updating time tracking every minute
-  chrome.alarms.create('updateTimeTracking', {
-    delayInMinutes: 1,
-    periodInMinutes: 1
-  });
+  try {
+    console.log('🌱 Tab Garden extension installed');
+    
+    // Initialize empty garden object in storage
+    await chrome.storage.local.set({ garden: {} });
+    console.log('✅ Garden storage initialized');
+    
+    // Create alarm for updating wilting state every hour
+    chrome.alarms.create('updateWiltingState', { 
+      delayInMinutes: 60, 
+      periodInMinutes: 60 
+    });
+    
+    // Create alarm for updating time tracking every minute
+    chrome.alarms.create('updateTimeTracking', {
+      delayInMinutes: 1,
+      periodInMinutes: 1
+    });
+    
+    console.log('✅ Background alarms created');
+  } catch (error) {
+    console.error('❌ Error during extension installation:', error);
+  }
 });
 
 // Handle new tab creation and URL updates
@@ -48,58 +55,65 @@ chrome.tabs.onCreated.addListener(async (tab) => {
 });
 
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
-  // Only proceed if URL changed and is a valid web URL
-  if (changeInfo.url && changeInfo.url.startsWith('http')) {
-    console.log('Tab URL updated:', tabId, changeInfo.url);
-    
-    const result = await chrome.storage.local.get(['garden']);
-    const garden = result.garden || {};
-    
-    if (garden[tabId]) {
-      // Update existing plant
-      garden[tabId].url = changeInfo.url;
-      garden[tabId].plantType = getPlantTypeForUrl(changeInfo.url);
-      garden[tabId].lastAccessed = Date.now();
-      garden[tabId].state = 'healthy';
-      garden[tabId].sessionStartTime = Date.now();
-      console.log('Plant updated for URL change:', tabId);
-    } else {
-      // Create new plant
-      garden[tabId] = {
-        id: tabId,
-        url: changeInfo.url,
-        plantType: getPlantTypeForUrl(changeInfo.url),
-        addedOn: Date.now(),
-        lastAccessed: Date.now(),
+  try {
+    // Only proceed if URL changed and is a valid web URL
+    if (changeInfo.url && changeInfo.url.startsWith('http')) {
+      console.log('🌐 Tab URL updated:', tabId, changeInfo.url);
+      
+      const result = await chrome.storage.local.get(['garden']);
+      const garden = result.garden || {};
+      
+      if (garden[tabId]) {
+        // Update existing plant
+        garden[tabId].url = changeInfo.url;
+        garden[tabId].plantType = getPlantTypeForUrl(changeInfo.url);
+        garden[tabId].lastAccessed = Date.now();
+        garden[tabId].state = 'healthy';
+        garden[tabId].sessionStartTime = Date.now();
+        console.log('🌱 Plant updated for URL change:', tabId);
+      } else {
+        // Create new plant
+        garden[tabId] = {
+          id: tabId,
+          url: changeInfo.url,
+          plantType: getPlantTypeForUrl(changeInfo.url),
+          addedOn: Date.now(),
+          lastAccessed: Date.now(),
         state: 'healthy',
         timeSpent: 0,
         growthLevel: 1,
         sessionStartTime: Date.now(),
         totalVisits: 1
       };
-      console.log('New plant created for tab:', tabId, garden[tabId]);
+      console.log('🌱 New plant created for tab:', tabId, garden[tabId]);
     }
     
     await chrome.storage.local.set({ garden });
+    console.log('✅ Garden updated in storage');
+  }
+  } catch (error) {
+    console.error('❌ Error in tab update handler:', error);
   }
 });
 
 // Handle tab activation (when user switches to a tab)
 chrome.tabs.onActivated.addListener(async (activeInfo) => {
-  const result = await chrome.storage.local.get(['garden']);
-  const garden = result.garden || {};
-  
-  if (garden[activeInfo.tabId]) {
-    const now = Date.now();
-    const plant = garden[activeInfo.tabId];
+  try {
+    console.log('🔄 Tab activated:', activeInfo.tabId);
+    const result = await chrome.storage.local.get(['garden']);
+    const garden = result.garden || {};
     
-    // If there was a previous session, add that time to total
-    if (plant.sessionStartTime) {
-      const sessionTime = now - plant.sessionStartTime;
-      plant.timeSpent += sessionTime;
-    }
-    
-    // Start new session
+    if (garden[activeInfo.tabId]) {
+      const now = Date.now();
+      const plant = garden[activeInfo.tabId];
+      
+      // If there was a previous session, add that time to total
+      if (plant.sessionStartTime) {
+        const sessionTime = now - plant.sessionStartTime;
+        plant.timeSpent += sessionTime;
+      }
+      
+      // Start new session
     plant.sessionStartTime = now;
     plant.lastAccessed = now;
     plant.state = 'healthy';
@@ -110,7 +124,10 @@ chrome.tabs.onActivated.addListener(async (activeInfo) => {
     plant.growthLevel = Math.min(5, Math.floor(minutesSpent / 5) + 1);
     
     await chrome.storage.local.set({ garden });
-    console.log('Tab accessed, plant refreshed:', activeInfo.tabId, 'Growth level:', plant.growthLevel);
+    console.log('✅ Tab accessed, plant refreshed:', activeInfo.tabId, 'Growth level:', plant.growthLevel);
+  }
+  } catch (error) {
+    console.error('❌ Error in tab activation handler:', error);
   }
 });
 

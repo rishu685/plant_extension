@@ -1,6 +1,12 @@
 // Debug script for Tab Garden - Run this in the new tab page console
 
-console.log("🌱 Tab Garden Debug Script");
+console.log("🌱 Tab Garden Debug Script Loaded");
+
+// Simple test function to verify the script is loaded
+window.debugTest = function() {
+  console.log("✅ Debug script is working!");
+  return "Debug script loaded successfully";
+};
 
 // Function to check current garden state - Make it globally accessible
 window.checkGarden = async function checkGarden() {
