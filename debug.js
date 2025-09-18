@@ -2,8 +2,8 @@
 
 console.log("🌱 Tab Garden Debug Script");
 
-// Function to check current garden state
-async function checkGarden() {
+// Function to check current garden state - Make it globally accessible
+window.checkGarden = async function checkGarden() {
   try {
     const result = await chrome.storage.local.get(['garden']);
     console.log("Current garden state:", result.garden);
@@ -19,10 +19,10 @@ async function checkGarden() {
     console.error("❌ Error accessing storage:", error);
     return false;
   }
-}
+};
 
-// Function to create a test plant
-async function createTestPlant() {
+// Function to create a test plant - Make it globally accessible
+window.createTestPlant = async function createTestPlant() {
   try {
     const result = await chrome.storage.local.get(['garden']);
     const garden = result.garden || {};
@@ -56,10 +56,10 @@ async function createTestPlant() {
     console.error("❌ Error creating test plant:", error);
     return false;
   }
-}
+};
 
-// Function to clear garden
-async function clearGarden() {
+// Function to clear garden - Make it globally accessible
+window.clearGarden = async function clearGarden() {
   try {
     await chrome.storage.local.set({ garden: {} });
     console.log("✅ Garden cleared");
@@ -72,10 +72,10 @@ async function clearGarden() {
   } catch (error) {
     console.error("❌ Error clearing garden:", error);
   }
-}
+};
 
-// Function to check if animations are working
-function testAnimations() {
+// Function to check if animations are working - Make it globally accessible
+window.testAnimations = function testAnimations() {
   console.log("🎭 Testing animations...");
   
   // Check if CSS animations are loaded
@@ -101,12 +101,12 @@ function testAnimations() {
   } else {
     console.log("❌ Particle system element missing");
   }
-}
+};
 
 // Auto-run diagnostics
 console.log("🔍 Running diagnostics...");
-checkGarden();
-testAnimations();
+window.checkGarden();
+window.testAnimations();
 
 console.log(`
 🛠️ Available debug functions:
