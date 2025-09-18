@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Tab Garden Logo](assets/icon128.png)
+
 
 **Transform your browsing habits into a beautiful digital garden**
 
