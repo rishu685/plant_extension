@@ -1,68 +1,328 @@
-# Tab Garden 🌱
+# 🌱 Tab Garden - Chrome Extension
 
-A Chrome extension that transforms your new tab page into a visual garden where each open tab is represented by a plant, encouraging mindful browsing habits.
+<div align="center">
 
-## Features
+![Tab Garden Logo](assets/icon128.png)
 
-- **Visual Tab Representation**: Each open tab becomes a plant in your garden
-- **Plant Variety**: Different websites get different plant types (YouTube → Fern, GitHub → Bonsai, etc.)
-- **Health System**: Plants stay healthy when you visit them, but start wilting after 24 hours of inactivity
-- **Interactive Garden**: Click on plants to switch to their corresponding tabs
-- **Real-time Updates**: Your garden updates automatically as you open, close, and visit tabs
-- **Beautiful Design**: Animated background and responsive layout with a garden theme
+**Transform your browsing habits into a beautiful digital garden**
 
-## Plant Types
+[![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-4285f4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://github.com/rishu685/plant_extension)
+[![Manifest V3](https://img.shields.io/badge/Manifest-V3-green?style=for-the-badge)](https://developer.chrome.com/docs/extensions/mv3/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
-- 🌿 **Fern** - YouTube and video sites
-- 🌳 **Bonsai** - GitHub and development sites  
-- 🌸 **Flower** - Twitter/X and social media
-- 🌵 **Cactus** - News and information sites
-- 🌻 **Sunflower** - Google and search engines
-- 🌲 **Tree** - Stack Overflow and Q&A sites
-- 🎋 **Bamboo** - Reddit and forums
-- 🌱 **Sapling** - All other websites
+[Features](#-features) •
+[Installation](#-installation) •
+[How It Works](#-how-it-works) •
+[Plant Types](#-plant-types) •
+[Growth System](#-growth-system) •
+[Screenshots](#-screenshots)
 
-## Installation
+</div>
 
-1. Download or clone this repository
-2. Open Chrome and go to `chrome://extensions/`
-3. Enable "Developer mode" in the top right
-4. Click "Load unpacked" and select the extension folder
-5. The extension will be installed and your new tab page will be replaced with Tab Garden
+---
 
-## How It Works
+## 🌟 Overview
 
-- **Healthy Plants**: Tabs visited within the last 24 hours appear as healthy, colorful plants
-- **Wilting Plants**: Tabs not accessed for over 24 hours become grayscale and slightly rotated
-- **Garden Stats**: View your garden statistics at the bottom (total plants, healthy count, wilting count)
-- **Tab Management**: Click any plant to switch to that tab, or right-click to close it
+Tab Garden is a Chrome extension that gamifies your browsing experience by transforming each open tab into a virtual plant in your personal digital garden. The more time you spend on a website, the more your plant grows - encouraging mindful browsing and helping you visualize your online habits.
 
-## Keyboard Shortcuts
+### ✨ Key Highlights
+- 🎮 **Gamified Browsing**: Turn tab management into an engaging garden simulation
+- 📈 **Growth Tracking**: Plants grow based on actual time spent on websites
+- 🌈 **Visual Feedback**: Beautiful animations and effects for plant growth
+- 📱 **Tiny Overlays**: See your plant progress directly on web pages
+- 📊 **Smart Analytics**: Track your browsing patterns and time spent
+- 🎨 **Responsive Design**: Works perfectly on all screen sizes
 
-- `R` - Refresh the garden display
-- `Esc` - Close the new tab
+---
 
-## Technical Details
+## 🚀 Features
 
-- **Manifest V3**: Built with the latest Chrome extension standards
-- **Permissions**: Uses `tabs`, `storage`, and `alarms` permissions
-- **Storage**: Tab data is stored locally using `chrome.storage.local`
-- **Background Service**: Monitors tab activity and updates plant states
-- **Responsive Design**: Works on desktop, tablet, and mobile screens
+### 🌱 **Digital Garden Experience**
+- Replace boring new tab page with a vibrant garden visualization
+- Each open browser tab becomes a unique plant in your garden
+- Real-time updates as you browse and interact with websites
 
-## Privacy
+### 📊 **Intelligent Growth System**
+- **5 Growth Levels**: Seedling → Sprout → Young → Mature → Ancient
+- **Time-Based Evolution**: Plants grow every 5 minutes of active use
+- **Visual Progression**: Size, brightness, and effects increase with growth
+- **Golden Aura**: Special effects for mature plants (Level 4-5)
 
-This extension only stores tab information locally on your device. No data is sent to external servers.
+### 🎭 **Dynamic Plant Types**
+Different websites spawn different plant types based on their domain:
 
-## Development
+| Plant | Websites | Appearance |
+|-------|----------|------------|
+| 🌿 Fern | YouTube, Video sites | Lush green fronds |
+| 🌳 Bonsai | GitHub, Development | Elegant tree structure |
+| 🌸 Flower | Twitter, Social media | Colorful blossoms |
+| 🌵 Cactus | News, Information | Hardy desert plant |
+| 🌻 Sunflower | Google, Search engines | Bright yellow petals |
+| 🌲 Tree | Stack Overflow, Q&A | Tall evergreen |
+| 🎋 Bamboo | Reddit, Forums | Flexible green stalks |
+| 🌱 Sapling | All other sites | Generic young plant |
 
-The extension consists of:
-- `manifest.json` - Extension configuration
-- `background.js` - Service worker for tab monitoring
-- `newTab.html` - New tab page structure
-- `newTab.css` - Garden styling and animations
-- `newTab.js` - Garden rendering and interaction logic
+### 💫 **Advanced Features**
+- **Health System**: Plants wilt after 24 hours of inactivity
+- **Tab Overlay**: Tiny plant indicator on each webpage
+- **Growth Animations**: Smooth transitions when plants level up
+- **Sparkle Effects**: Special animations for ancient plants
+- **Context Menu**: Right-click plants to close tabs
+- **Keyboard Shortcuts**: Quick garden refresh and navigation
+- **Statistics Dashboard**: Track total time and average growth levels
 
-## License
+---
 
-MIT License - Feel free to modify and distribute!
+## 🛠 Installation
+
+### Method 1: Load Unpacked Extension (Recommended)
+
+1. **Download the Extension**
+   ```bash
+   git clone https://github.com/rishu685/plant_extension.git
+   cd plant_extension
+   ```
+
+2. **Open Chrome Extensions Page**
+   - Navigate to `chrome://extensions/` in your Chrome browser
+   - Or click the puzzle piece icon → "Manage Extensions"
+
+3. **Enable Developer Mode**
+   - Toggle the "Developer mode" switch in the top right corner
+
+4. **Load the Extension**
+   - Click "Load unpacked" button
+   - Select the `plant_extension` folder you downloaded
+   - The extension will be installed immediately
+
+5. **Verify Installation**
+   - Open a new tab to see your garden
+   - Visit any website to start growing plants!
+
+### Method 2: Download ZIP
+
+1. Click the green "Code" button → "Download ZIP"
+2. Extract the ZIP file to your desired location
+3. Follow steps 2-5 from Method 1
+
+---
+
+## 🌿 How It Works
+
+### 🔄 **Plant Lifecycle**
+
+```mermaid
+graph LR
+    A[Open Tab] --> B[🌱 Seedling]
+    B --> C[Visit Site]
+    C --> D[⏱️ Time Tracking]
+    D --> E[🌿 Growth]
+    E --> F[💫 Special Effects]
+    F --> G[🏆 Ancient Plant]
+```
+
+### 📈 **Growth Progression**
+
+| Level | Name | Time Required | Visual Changes | Special Effects |
+|-------|------|---------------|----------------|-----------------|
+| 1 | 🌱 Seedling | 0-5 minutes | Small, basic appearance | Gentle sway animation |
+| 2 | 🌿 Sprout | 5-10 minutes | Slightly larger, brighter | Enhanced colors |
+| 3 | 🌳 Young | 10-15 minutes | Medium size, saturated | Improved brightness |
+| 4 | 🌺 Mature | 15-20 minutes | Large, golden border | Golden aura effect |
+| 5 | ⭐ Ancient | 20+ minutes | Largest size, glowing | Sparkle animations |
+
+### 🎯 **Interaction System**
+
+- **Click Plants**: Switch to the corresponding browser tab
+- **Right-Click**: Context menu to close tabs
+- **Hover Effects**: Plants react with scaling and glow
+- **Wilting**: Unused tabs become grayscale after 24 hours
+- **Overlay Indicator**: Small plant icon on each webpage shows growth
+
+---
+
+## 📱 Screenshots
+
+### 🏡 Main Garden View
+![Garden Overview](screenshots/garden-overview.png)
+*Beautiful garden layout with plants of different growth levels*
+
+### 🌱 Plant Growth Stages
+![Growth Stages](screenshots/growth-stages.png)
+*Visual comparison of all 5 growth levels*
+
+### 💫 Special Effects
+![Special Effects](screenshots/special-effects.png)
+*Golden aura and sparkle animations for mature plants*
+
+### 📊 Statistics Dashboard
+![Statistics](screenshots/statistics.png)
+*Track your browsing habits and garden health*
+
+---
+
+## ⚡ Technical Details
+
+### 🏗 **Architecture**
+- **Manifest Version**: V3 (Latest Chrome Extension Standard)
+- **Background Script**: Service Worker for tab monitoring
+- **Content Script**: Injected overlay for all web pages
+- **Storage**: Local Chrome storage for plant data persistence
+- **Permissions**: Minimal required permissions for functionality
+
+### 📦 **File Structure**
+```
+plant_extension/
+├── 📄 manifest.json          # Extension configuration
+├── 🔧 background.js          # Service worker logic
+├── 🎨 newTab.html            # Garden page structure
+├── 💅 newTab.css             # Styling and animations
+├── ⚡ newTab.js              # Garden interaction logic
+├── 🖼️ content.js             # Tab overlay functionality
+├── 📚 README.md              # Documentation
+└── 📁 assets/                # Icons and images
+    ├── icon16.png
+    ├── icon48.png
+    └── icon128.png
+```
+
+### 🔒 **Privacy & Security**
+- **Local Storage Only**: All data stays on your device
+- **No External Servers**: No data transmitted to third parties
+- **Minimal Permissions**: Only requests necessary browser access
+- **Open Source**: Complete transparency with public code
+
+---
+
+## 🎮 Usage Tips
+
+### 🏆 **Maximize Your Garden**
+1. **Visit Sites Regularly**: Keep plants healthy by returning to tabs
+2. **Focus Time**: Spend meaningful time on sites to grow plants
+3. **Close Unused Tabs**: Remove wilted plants to keep garden clean
+4. **Explore Different Sites**: Collect all 8 plant types
+5. **Watch Growth**: Enjoy the satisfying progression animations
+
+### ⌨️ **Keyboard Shortcuts**
+- `R` - Refresh garden display
+- `Esc` - Close new tab
+- `Right-click` - Access plant context menu
+
+### 📈 **Growth Strategy**
+- **Level 1-2**: Quick progression for new sites
+- **Level 3-4**: Requires sustained engagement
+- **Level 5**: Achievement for your most-used sites
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions to make Tab Garden even better! Here's how you can help:
+
+### 🐛 **Bug Reports**
+- Use GitHub Issues to report bugs
+- Include browser version and steps to reproduce
+- Screenshots are always helpful
+
+### 💡 **Feature Requests**
+- Suggest new plant types or growth mechanics
+- Propose UI/UX improvements
+- Share ideas for gamification features
+
+### 🔧 **Development**
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+### 📝 **Development Setup**
+```bash
+# Clone your fork
+git clone https://github.com/YOUR_USERNAME/plant_extension.git
+cd plant_extension
+
+# Make changes and test in Chrome
+# Load unpacked extension for testing
+
+# Commit and push
+git add .
+git commit -m "Your feature description"
+git push origin feature-branch
+```
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+```
+MIT License
+
+Copyright (c) 2025 Tab Garden
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software...
+```
+
+---
+
+## 🙏 Acknowledgments
+
+- **Chrome Extension APIs**: For providing the platform
+- **Web Animations API**: For smooth plant growth animations
+- **CSS Grid & Flexbox**: For responsive garden layout
+- **Unicode Emoji**: For beautiful plant representations
+- **Open Source Community**: For inspiration and feedback
+
+---
+
+## 📞 Support
+
+### 🔗 **Quick Links**
+- 🐛 [Report Bug](https://github.com/rishu685/plant_extension/issues)
+- 💡 [Request Feature](https://github.com/rishu685/plant_extension/issues)
+- 📖 [Documentation](https://github.com/rishu685/plant_extension/wiki)
+- 💬 [Discussions](https://github.com/rishu685/plant_extension/discussions)
+
+### ❓ **FAQ**
+
+<details>
+<summary><strong>Why aren't my plants growing?</strong></summary>
+<br>
+Plants grow based on active time spent on tabs. Make sure you're actively using the tab and wait for the growth intervals (every 5 minutes).
+</details>
+
+<details>
+<summary><strong>Can I backup my garden data?</strong></summary>
+<br>
+Currently, all data is stored locally in Chrome. We're working on export/import functionality for future versions.
+</details>
+
+<details>
+<summary><strong>Does this extension slow down my browser?</strong></summary>
+<br>
+No! Tab Garden uses efficient background processing and minimal resources. The extension is optimized for performance.
+</details>
+
+<details>
+<summary><strong>Can I customize plant types?</strong></summary>
+<br>
+Currently, plant types are automatically assigned based on domains. Custom plant selection is planned for future updates.
+</details>
+
+---
+
+<div align="center">
+
+### 🌟 **Star this repository if Tab Garden helped you cultivate better browsing habits!** 🌟
+
+**Made with 💚 for mindful browsing**
+
+[⬆ Back to Top](#-tab-garden---chrome-extension)
+
+</div>
