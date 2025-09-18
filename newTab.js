@@ -211,11 +211,154 @@ setInterval(() => {
   }
 }, 30000); // Update every 30 seconds
 
-// Initialize garden when page loads
+// Initialize garden when page loads with enhanced animations
 document.addEventListener('DOMContentLoaded', () => {
   console.log('Tab Garden page loaded');
+  
+  // Add entrance animation to page elements
+  addEntranceAnimations();
+  
+  // Start background particle animation
+  initializeParticleSystem();
+  
+  // Render garden
   renderGarden();
+  
+  // Add interactive mouse effects
+  addMouseInteractions();
 });
+
+// Add entrance animations
+function addEntranceAnimations() {
+  // Animate header elements
+  const header = document.querySelector('.garden-header');
+  if (header) {
+    header.style.opacity = '0';
+    header.style.transform = 'translateY(-30px)';
+    
+    setTimeout(() => {
+      header.style.transition = 'all 1s ease-out';
+      header.style.opacity = '1';
+      header.style.transform = 'translateY(0)';
+    }, 100);
+  }
+}
+
+// Initialize enhanced particle system
+function initializeParticleSystem() {
+  const particleContainer = document.querySelector('.floating-particles');
+  if (!particleContainer) return;
+  
+  // Add more dynamic particles
+  setInterval(() => {
+    if (Math.random() < 0.3) { // 30% chance every interval
+      createFloatingParticle();
+    }
+  }, 2000);
+}
+
+// Create floating particle
+function createFloatingParticle() {
+  const particleContainer = document.querySelector('.floating-particles');
+  if (!particleContainer) return;
+  
+  const particle = document.createElement('div');
+  particle.className = 'particle dynamic';
+  
+  // Random properties
+  const size = Math.random() * 4 + 2;
+  const colors = [
+    'rgba(120, 200, 80, 0.7)',
+    'rgba(100, 180, 255, 0.6)',
+    'rgba(255, 200, 100, 0.8)',
+    'rgba(200, 100, 255, 0.5)',
+    'rgba(255, 180, 120, 0.7)'
+  ];
+  
+  particle.style.width = size + 'px';
+  particle.style.height = size + 'px';
+  particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+  particle.style.left = Math.random() * 100 + '%';
+  particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+  particle.style.animationDelay = '0s';
+  
+  particleContainer.appendChild(particle);
+  
+  // Remove particle after animation
+  setTimeout(() => {
+    if (particle.parentNode) {
+      particle.parentNode.removeChild(particle);
+    }
+  }, 25000);
+}
+
+// Add mouse interaction effects
+function addMouseInteractions() {
+  document.addEventListener('mousemove', (e) => {
+    const mouseX = e.clientX / window.innerWidth;
+    const mouseY = e.clientY / window.innerHeight;
+    
+    // Create subtle background shift based on mouse position
+    const background = document.body;
+    const shiftX = (mouseX - 0.5) * 20;
+    const shiftY = (mouseY - 0.5) * 20;
+    
+    background.style.backgroundPosition = `${shiftX}px ${shiftY}px`;
+  });
+  
+  // Add click ripple effect
+  document.addEventListener('click', (e) => {
+    createRippleEffect(e.clientX, e.clientY);
+  });
+}
+
+// Create ripple effect on click
+function createRippleEffect(x, y) {
+  const ripple = document.createElement('div');
+  ripple.style.cssText = `
+    position: fixed;
+    top: ${y}px;
+    left: ${x}px;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1000;
+    animation: ripple-expand 0.6s ease-out;
+  `;
+  
+  document.body.appendChild(ripple);
+  
+  // Add ripple animation
+  const style = document.createElement('style');
+  if (!document.querySelector('#ripple-style')) {
+    style.id = 'ripple-style';
+    style.textContent = `
+      @keyframes ripple-expand {
+        0% { 
+          width: 0; 
+          height: 0; 
+          opacity: 0.8; 
+          transform: translate(-50%, -50%); 
+        }
+        100% { 
+          width: 100px; 
+          height: 100px; 
+          opacity: 0; 
+          transform: translate(-50%, -50%); 
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+  
+  setTimeout(() => {
+    if (ripple.parentNode) {
+      ripple.parentNode.removeChild(ripple);
+    }
+  }, 600);
+}
 
 // Also render on window load as backup
 window.addEventListener('load', () => {

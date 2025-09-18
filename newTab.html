@@ -7,12 +7,29 @@
     <link rel="stylesheet" href="newTab.css">
 </head>
 <body>
+    <!-- Floating particles background -->
+    <div class="floating-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
     <header class="garden-header">
         <h1>🌱 Your Tab Garden 🌱</h1>
         <p>Each plant represents an open tab. Keep your garden healthy by visiting your tabs regularly!</p>
     </header>
     
     <main class="garden-main">
+        <!-- Loading state -->
+        <div id="garden-loading" class="garden-loading" style="display: none;">
+            <div class="loading-spinner">
+                <div class="spinner-leaf">🌱</div>
+                <div class="loading-text">Growing your garden...</div>
+            </div>
+        </div>
+        
         <div id="garden-container" class="garden-grid">
             <!-- Plants will be dynamically rendered here -->
         </div>
