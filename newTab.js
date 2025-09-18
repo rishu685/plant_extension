@@ -461,3 +461,79 @@ document.addEventListener('contextmenu', (event) => {
     }, 100);
   }
 });
+
+// Debug functions - added directly to ensure they're always available
+console.log("🌱 Adding debug functions to Tab Garden...");
+
+window.debugTest = function() {
+    console.log("✅ Debug functions are working!");
+    return "Debug functions loaded successfully";
+};
+
+window.checkGarden = async function() {
+    try {
+        const result = await chrome.storage.local.get(['garden']);
+        console.log("Current garden state:", result.garden);
+        
+        if (!result.garden || Object.keys(result.garden).length === 0) {
+            console.log("❌ Garden is empty - no plants found");
+            return false;
+        } else {
+            console.log("✅ Garden has", Object.keys(result.garden).length, "plants");
+            return true;
+        }
+    } catch (error) {
+        console.error("❌ Error accessing storage:", error);
+        return false;
+    }
+};
+
+window.createTestPlant = async function() {
+    try {
+        const result = await chrome.storage.local.get(['garden']);
+        const garden = result.garden || {};
+        
+        // Create a test plant for YouTube
+        garden['test-youtube'] = {
+            id: 'test-youtube',
+            url: 'https://youtube.com',
+            plantType: 'fern',
+            addedOn: Date.now(),
+            lastAccessed: Date.now(),
+            state: 'healthy',
+            timeSpent: 300000, // 5 minutes
+            growthLevel: 2,
+            sessionStartTime: null,
+            totalVisits: 3
+        };
+        
+        await chrome.storage.local.set({ garden });
+        console.log("✅ Test plant created!");
+        
+        // Force re-render
+        if (typeof window.renderGarden === 'function') {
+            window.renderGarden();
+        }
+        
+        return true;
+    } catch (error) {
+        console.error("❌ Error creating test plant:", error);
+        return false;
+    }
+};
+
+window.runFullTest = async function() {
+    console.log("🧪 Running full Tab Garden test...");
+    
+    try {
+        console.log("✅ Chrome extension APIs available");
+        await window.checkGarden();
+        await window.createTestPlant();
+        console.log("🎉 Full test completed!");
+    } catch (error) {
+        console.error("❌ Test failed:", error);
+    }
+};
+
+console.log("✅ Debug functions added to Tab Garden!");
+console.log("Try: debugTest() or createTestPlant()");
