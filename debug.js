@@ -45,8 +45,10 @@ async function createTestPlant() {
     console.log("✅ Test plant created!");
     
     // Force re-render
-    if (typeof renderGarden === 'function') {
-      renderGarden();
+    if (typeof window.renderGarden === 'function') {
+      window.renderGarden();
+    } else {
+      console.warn('renderGarden not available - reload the new tab page');
     }
     
     return true;
@@ -62,8 +64,10 @@ async function clearGarden() {
     await chrome.storage.local.set({ garden: {} });
     console.log("✅ Garden cleared");
     
-    if (typeof renderGarden === 'function') {
-      renderGarden();
+    if (typeof window.renderGarden === 'function') {
+      window.renderGarden();
+    } else {
+      console.warn('renderGarden not available - reload the new tab page');
     }
   } catch (error) {
     console.error("❌ Error clearing garden:", error);

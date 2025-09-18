@@ -131,8 +131,8 @@ function updateGardenStats(garden) {
   growthStats.textContent = `${totalHours}h total • Avg Level ${avgGrowthLevel}`;
 }
 
-// Main render function
-async function renderGarden() {
+// Main render function - Make it globally accessible
+window.renderGarden = async function renderGarden() {
   try {
     console.log('🌱 Rendering garden...');
     const result = await chrome.storage.local.get(['garden']);
@@ -226,7 +226,7 @@ async function renderGarden() {
       loadingElement.style.display = 'none';
     }
   }
-}
+};
 
 // Listen for storage changes to auto-update the display
 chrome.storage.onChanged.addListener((changes, namespace) => {
