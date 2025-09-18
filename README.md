@@ -2,9 +2,19 @@
 
 <div align="center">
 
-
-
 **Transform your browsing habits into a beautiful digital garden**
+
+```
+    🌱 Welcome to Tab Garden 🌱
+    ┌─────────────────────────────────┐
+    │  YouTube  GitHub   Google  News │
+    │    🌿      🌳       🌻    🌵   │
+    │   Level 2  Level 3  Level 5  L1 │
+    │  ╰─────╯  ╰─────╯  ╰─────╯ ╰──╯ │
+    │   Active   Growing   Ancient  New│
+    └─────────────────────────────────┘
+       Each tab becomes a growing plant!
+```
 
 [![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-4285f4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://github.com/rishu685/plant_extension)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-green?style=for-the-badge)](https://developer.chrome.com/docs/extensions/mv3/)
@@ -24,6 +34,18 @@
 ## 🌟 Overview
 
 Tab Garden is a Chrome extension that gamifies your browsing experience by transforming each open tab into a virtual plant in your personal digital garden. The more time you spend on a website, the more your plant grows - encouraging mindful browsing and helping you visualize your online habits.
+
+### 🎬 Live Demo Preview
+```
+🕒 Browsing Session Timeline:
+┌─ 0:00 ─────── 5:00 ─────── 10:00 ────── 15:00 ─────── 20:00 ─┐
+│       Open     Plant       Young       Mature      Ancient    │
+│   YouTube.com  grows!      plant       golden      sparkles   │
+│      🌱    →    🌿    →     🌳    →     🌺    →      ⭐       │
+│                                       ✨ Aura    ✨ Effects   │
+└───────────────────────────────────────────────────────────────┘
+     Your tabs evolve as you browse - encouraging mindful usage!
+```
 
 ### ✨ Key Highlights
 - 🎮 **Gamified Browsing**: Turn tab management into an engaging garden simulation
@@ -144,20 +166,43 @@ graph LR
 ## 📱 Screenshots
 
 ### 🏡 Main Garden View
-![Garden Overview](screenshots/garden-overview.png)
-*Beautiful garden layout with plants of different growth levels*
+```
+🌱 Tab Garden - Your Digital Oasis
+┌─────────────────────────────────────────────────────────────┐
+│  🌱 Your Tab Garden 🌱                                      │
+│  Transform your tabs into a beautiful digital garden        │
+│                                                             │
+│  🌿    🌳    🌸    🌵    🌻    🌲    🎋    ⭐              │
+│ Fern  Bonsai Flower Cactus Sun   Tree  Bamboo Ancient      │
+│ (L2)  (L3)  (L4)  (L1)  (L5)  (L2)  (L3)   (L5)         │
+│                                                             │
+│ 🌱 8 plants growing • 6 healthy • 0 wilting               │
+└─────────────────────────────────────────────────────────────┘
+```
+*Beautiful garden layout with plants representing your open tabs*
 
-### 🌱 Plant Growth Stages
-![Growth Stages](screenshots/growth-stages.png)
-*Visual comparison of all 5 growth levels*
+### 🌱 Plant Growth Demonstration
+```
+Growth Progression System:
+🌱 Level 1 (Seedling)  →  🌿 Level 2 (Sprout)   →  🌳 Level 3 (Young)
+   0-5 minutes            5-10 minutes             10-15 minutes
+   
+🌺 Level 4 (Mature)    →  ⭐ Level 5 (Ancient)
+   15-20 minutes          20+ minutes
+   Golden aura ✨         Sparkle effects ✨
+```
+*Visual progression showing how plants evolve with time*
 
-### 💫 Special Effects
-![Special Effects](screenshots/special-effects.png)
-*Golden aura and sparkle animations for mature plants*
-
-### 📊 Statistics Dashboard
-![Statistics](screenshots/statistics.png)
-*Track your browsing habits and garden health*
+### 💫 Special Features Preview
+```
+Tab Overlays:          Growth Animations:       Statistics:
+┌─────────────┐       🌱 → 🌿 → 🌳 → 🌺 → ⭐   📊 Garden Stats
+│ YouTube  🌿2│       ✨ Smooth transitions    │ 8 plants total
+│ GitHub   🌳3│       💫 Golden aura effects   │ 45 min avg time
+│ Google   🌻5│       🎭 Sparkle animations    │ 3.2 avg level
+└─────────────┘       � Real-time updates     └─────────────────
+```
+*Interactive overlays, smooth animations, and detailed analytics*
 
 ---
 
