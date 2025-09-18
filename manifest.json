@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Tab Garden",
+  "version": "1.0.0",
+  "description": "Transform your new tab page into a visual garden where each open tab is represented by a plant, encouraging mindful browsing.",
+  
+  "permissions": [
+    "tabs",
+    "storage",
+    "alarms",
+    "activeTab"
+  ],
+  
+  "background": {
+    "service_worker": "background.js"
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ],
+  
+  "chrome_url_overrides": {
+    "newtab": "newTab.html"
+  },
+  
+  "icons": {
+    "16": "assets/icon16.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  }
+}

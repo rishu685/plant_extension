@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab Garden</title>
+    <link rel="stylesheet" href="newTab.css">
+</head>
+<body>
+    <header class="garden-header">
+        <h1>🌱 Your Tab Garden 🌱</h1>
+        <p>Each plant represents an open tab. Keep your garden healthy by visiting your tabs regularly!</p>
+    </header>
+    
+    <main class="garden-main">
+        <div id="garden-container" class="garden-grid">
+            <!-- Plants will be dynamically rendered here -->
+        </div>
+        
+        <div id="empty-garden" class="empty-garden" style="display: none;">
+            <div class="empty-garden-content">
+                <div class="empty-garden-icon">🌿</div>
+                <h2>Your garden is empty</h2>
+                <p>Open some tabs to start growing your digital garden!</p>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="garden-footer">
+        <div class="garden-stats">
+            <span id="plant-count">0 plants growing</span>
+            <span class="separator">•</span>
+            <span id="healthy-count">0 healthy</span>
+            <span class="separator">•</span>
+            <span id="wilting-count">0 wilting</span>
+        </div>
+    </footer>
+    
+    <script src="newTab.js"></script>
+</body>
+</html>
