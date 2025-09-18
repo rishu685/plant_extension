@@ -41,31 +41,47 @@ chrome.runtime.onInstalled.addListener(async () => {
   });
 });
 
-// Handle new tab creation
+// Handle new tab creation and URL updates
 chrome.tabs.onCreated.addListener(async (tab) => {
-  if (!tab.url || tab.url === 'chrome://newtab/' || tab.url.startsWith('chrome://')) {
-    return; // Skip chrome internal pages
+  console.log('Tab created:', tab.id, tab.url);
+  // Don't create plants here as URL might not be set yet
+});
+
+chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
+  // Only proceed if URL changed and is a valid web URL
+  if (changeInfo.url && changeInfo.url.startsWith('http')) {
+    console.log('Tab URL updated:', tabId, changeInfo.url);
+    
+    const result = await chrome.storage.local.get(['garden']);
+    const garden = result.garden || {};
+    
+    if (garden[tabId]) {
+      // Update existing plant
+      garden[tabId].url = changeInfo.url;
+      garden[tabId].plantType = getPlantTypeForUrl(changeInfo.url);
+      garden[tabId].lastAccessed = Date.now();
+      garden[tabId].state = 'healthy';
+      garden[tabId].sessionStartTime = Date.now();
+      console.log('Plant updated for URL change:', tabId);
+    } else {
+      // Create new plant
+      garden[tabId] = {
+        id: tabId,
+        url: changeInfo.url,
+        plantType: getPlantTypeForUrl(changeInfo.url),
+        addedOn: Date.now(),
+        lastAccessed: Date.now(),
+        state: 'healthy',
+        timeSpent: 0,
+        growthLevel: 1,
+        sessionStartTime: Date.now(),
+        totalVisits: 1
+      };
+      console.log('New plant created for tab:', tabId, garden[tabId]);
+    }
+    
+    await chrome.storage.local.set({ garden });
   }
-  
-  const result = await chrome.storage.local.get(['garden']);
-  const garden = result.garden || {};
-  
-  // Add new plant to garden with growth tracking
-  garden[tab.id] = {
-    id: tab.id,
-    url: tab.url,
-    plantType: getPlantTypeForUrl(tab.url),
-    addedOn: Date.now(),
-    lastAccessed: Date.now(),
-    state: 'healthy',
-    timeSpent: 0, // Total time spent on this tab in milliseconds
-    growthLevel: 1, // Growth stage: 1 (seedling) to 5 (fully grown)
-    sessionStartTime: null, // When current session started
-    totalVisits: 1 // Number of times this tab has been visited
-  };
-  
-  await chrome.storage.local.set({ garden });
-  console.log('New plant added:', garden[tab.id]);
 });
 
 // Handle tab activation (when user switches to a tab)
@@ -119,25 +135,6 @@ chrome.tabs.onRemoved.addListener(async (tabId) => {
     delete garden[tabId];
     await chrome.storage.local.set({ garden });
     console.log('Plant removed from garden:', tabId);
-  }
-});
-
-// Handle tab URL updates
-chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
-  if (changeInfo.url) {
-    const result = await chrome.storage.local.get(['garden']);
-    const garden = result.garden || {};
-    
-    if (garden[tabId]) {
-      garden[tabId].url = changeInfo.url;
-      garden[tabId].plantType = getPlantTypeForUrl(changeInfo.url);
-      garden[tabId].lastAccessed = Date.now();
-      garden[tabId].state = 'healthy';
-      garden[tabId].sessionStartTime = Date.now(); // Reset session for new URL
-      
-      await chrome.storage.local.set({ garden });
-      console.log('Plant updated for URL change:', tabId);
-    }
   }
 });
 

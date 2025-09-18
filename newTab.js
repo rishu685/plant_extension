@@ -134,64 +134,97 @@ function updateGardenStats(garden) {
 // Main render function
 async function renderGarden() {
   try {
+    console.log('🌱 Rendering garden...');
     const result = await chrome.storage.local.get(['garden']);
     const garden = result.garden || {};
     
+    console.log('Garden data:', garden);
+    
     const gardenContainer = document.getElementById('garden-container');
     const emptyGarden = document.getElementById('empty-garden');
+    const loadingElement = document.getElementById('garden-loading');
     
-    // Clear existing plants
-    gardenContainer.innerHTML = '';
-    
-    const plants = Object.values(garden);
-    
-    if (plants.length === 0) {
-      // Show empty garden state
-      gardenContainer.style.display = 'none';
-      emptyGarden.style.display = 'flex';
-    } else {
-      // Show garden with plants
-      gardenContainer.style.display = 'grid';
-      emptyGarden.style.display = 'none';
-      
-      // Sort plants by growth level first, then by last accessed time
-      plants.sort((a, b) => {
-        // Primary sort: Growth level (highest first)
-        if (b.growthLevel !== a.growthLevel) {
-          return (b.growthLevel || 1) - (a.growthLevel || 1);
-        }
-        // Secondary sort: Most recently accessed
-        return b.lastAccessed - a.lastAccessed;
-      });
-      
-      // Create and append plant elements with growth animations
-      plants.forEach((plant, index) => {
-        const plantElement = createPlantElement(plant);
-        
-        // Check if plant has grown since last render
-        const existingPlant = document.querySelector(`[data-tab-id="${plant.id}"]`);
-        if (existingPlant) {
-          const previousGrowth = parseInt(existingPlant.dataset.previousGrowth) || 1;
-          if ((plant.growthLevel || 1) > previousGrowth) {
-            plantElement.classList.add('growing');
-            setTimeout(() => {
-              plantElement.classList.remove('growing');
-            }, 800);
-          }
-        }
-        
-        // Stagger the appearance of plants for a nice effect
-        plantElement.style.animationDelay = `${index * 0.1}s`;
-        gardenContainer.appendChild(plantElement);
-      });
+    if (!gardenContainer || !emptyGarden) {
+      console.error('❌ Garden container elements not found');
+      return;
     }
     
-    // Update statistics
-    updateGardenStats(garden);
+    // Show loading briefly
+    if (loadingElement) {
+      loadingElement.style.display = 'flex';
+      gardenContainer.style.display = 'none';
+      emptyGarden.style.display = 'none';
+    }
     
-    console.log('Garden rendered with', plants.length, 'plants');
+    setTimeout(() => {
+      // Clear existing plants
+      gardenContainer.innerHTML = '';
+      
+      const plants = Object.values(garden);
+      console.log('Found', plants.length, 'plants to render');
+      
+      if (plants.length === 0) {
+        // Show empty garden state
+        gardenContainer.style.display = 'none';
+        emptyGarden.style.display = 'flex';
+        console.log('Showing empty garden state');
+      } else {
+        // Show garden with plants
+        gardenContainer.style.display = 'grid';
+        emptyGarden.style.display = 'none';
+        
+        // Sort plants by growth level first, then by last accessed time
+        plants.sort((a, b) => {
+          // Primary sort: Growth level (highest first)
+          if (b.growthLevel !== a.growthLevel) {
+            return (b.growthLevel || 1) - (a.growthLevel || 1);
+          }
+          // Secondary sort: Most recently accessed
+          return b.lastAccessed - a.lastAccessed;
+        });
+        
+        // Create and append plant elements with growth animations
+        plants.forEach((plant, index) => {
+          const plantElement = createPlantElement(plant);
+          
+          // Check if plant has grown since last render
+          const existingPlant = document.querySelector(`[data-tab-id="${plant.id}"]`);
+          if (existingPlant) {
+            const previousGrowth = parseInt(existingPlant.dataset.previousGrowth) || 1;
+            if ((plant.growthLevel || 1) > previousGrowth) {
+              plantElement.classList.add('growing');
+              setTimeout(() => {
+                plantElement.classList.remove('growing');
+              }, 800);
+            }
+          }
+          
+          // Stagger the appearance of plants for a nice effect
+          plantElement.style.animationDelay = `${index * 0.1}s`;
+          gardenContainer.appendChild(plantElement);
+          console.log('Added plant to garden:', plant.plantType, plant.url);
+        });
+        
+        console.log('✅ Garden rendered with', plants.length, 'plants');
+      }
+      
+      // Hide loading
+      if (loadingElement) {
+        loadingElement.style.display = 'none';
+      }
+      
+      // Update statistics
+      updateGardenStats(garden);
+    }, 300); // Short delay to show loading animation
+    
   } catch (error) {
-    console.error('Error rendering garden:', error);
+    console.error('❌ Error rendering garden:', error);
+    
+    // Hide loading on error
+    const loadingElement = document.getElementById('garden-loading');
+    if (loadingElement) {
+      loadingElement.style.display = 'none';
+    }
   }
 }
 
