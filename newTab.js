@@ -92,7 +92,7 @@ function createPlantElement(plant) {
     } catch (error) {
       console.log('Could not switch to tab:', error);
       // Tab might have been closed, trigger a refresh
-      renderGarden();
+      window.renderGarden();
     }
   });
   
@@ -232,7 +232,7 @@ window.renderGarden = async function renderGarden() {
 chrome.storage.onChanged.addListener((changes, namespace) => {
   if (namespace === 'local' && changes.garden) {
     console.log('Garden data changed, re-rendering...');
-    renderGarden();
+    window.renderGarden();
   }
 });
 
@@ -240,7 +240,7 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
 setInterval(() => {
   const plants = document.querySelectorAll('.plant');
   if (plants.length > 0) {
-    renderGarden();
+    window.renderGarden();
   }
 }, 30000); // Update every 30 seconds
 
@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeParticleSystem();
   
   // Render garden
-  renderGarden();
+  window.renderGarden();
   
   // Add interactive mouse effects
   addMouseInteractions();
@@ -395,13 +395,13 @@ function createRippleEffect(x, y) {
 
 // Also render on window load as backup
 window.addEventListener('load', () => {
-  renderGarden();
+  window.renderGarden();
 });
 
 // Handle visibility change (when user comes back to the tab)
 document.addEventListener('visibilitychange', () => {
   if (!document.hidden) {
-    renderGarden();
+    window.renderGarden();
   }
 });
 
@@ -410,7 +410,7 @@ document.addEventListener('keydown', (event) => {
   // Press 'R' to refresh garden
   if (event.key === 'r' || event.key === 'R') {
     event.preventDefault();
-    renderGarden();
+    window.renderGarden();
   }
   
   // Press 'Escape' to close new tab
