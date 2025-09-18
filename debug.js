@@ -116,10 +116,49 @@ window.testAnimations();
 
 console.log(`
 🛠️ Available debug functions:
+- debugTest() - Test if debug script is loaded
 - checkGarden() - Check current garden state
 - createTestPlant() - Create a test plant
 - clearGarden() - Clear all plants
 - testAnimations() - Test if animations work
+- runFullTest() - Run complete functionality test
 
-Try running: createTestPlant()
+Try running: debugTest() first, then createTestPlant()
 `);
+
+// Comprehensive test function
+window.runFullTest = async function() {
+  console.log("🧪 Running full Tab Garden test...");
+  
+  try {
+    // Test 1: Check if extension APIs are available
+    if (typeof chrome !== 'undefined' && chrome.storage) {
+      console.log("✅ Chrome extension APIs available");
+    } else {
+      console.log("❌ Chrome extension APIs not available");
+      return;
+    }
+    
+    // Test 2: Check storage access
+    await window.checkGarden();
+    
+    // Test 3: Create test plant
+    await window.createTestPlant();
+    
+    // Test 4: Test animations
+    window.testAnimations();
+    
+    // Test 5: Check if renderGarden works
+    if (typeof window.renderGarden === 'function') {
+      console.log("✅ renderGarden function available");
+      window.renderGarden();
+    } else {
+      console.log("❌ renderGarden function not available");
+    }
+    
+    console.log("🎉 Full test completed!");
+    
+  } catch (error) {
+    console.error("❌ Test failed:", error);
+  }
+};
