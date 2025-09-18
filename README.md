@@ -4,17 +4,6 @@
 
 **Transform your browsing habits into a beautiful digital garden**
 
-```
-    🌱 Welcome to Tab Garden 🌱
-    ┌─────────────────────────────────┐
-    │  YouTube  GitHub   Google  News │
-    │    🌿      🌳       🌻    🌵   │
-    │   Level 2  Level 3  Level 5  L1 │
-    │  ╰─────╯  ╰─────╯  ╰─────╯ ╰──╯ │
-    │   Active   Growing   Ancient  New│
-    └─────────────────────────────────┘
-       Each tab becomes a growing plant!
-```
 
 [![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-4285f4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://github.com/rishu685/plant_extension)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-green?style=for-the-badge)](https://developer.chrome.com/docs/extensions/mv3/)
