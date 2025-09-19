@@ -1,4 +1,4 @@
-# 🌱 Tab Garden - Chrome Extension
+#  Tab Garden - Chrome Extension
 
 <div align="center">
 
@@ -20,7 +20,7 @@
 
 ---
 
-## 🌟 Overview
+##  Overview
 
 Tab Garden is a Chrome extension that gamifies your browsing experience by transforming each open tab into a virtual plant in your personal digital garden. The more time you spend on a website, the more your plant grows - encouraging mindful browsing and helping you visualize your online habits.
 
@@ -36,7 +36,7 @@ Tab Garden is a Chrome extension that gamifies your browsing experience by trans
      Your tabs evolve as you browse - encouraging mindful usage!
 ```
 
-### ✨ Key Highlights
+### Key Highlights
 - 🎮 **Gamified Browsing**: Turn tab management into an engaging garden simulation
 - 📈 **Growth Tracking**: Plants grow based on actual time spent on websites
 - 🌈 **Visual Feedback**: Beautiful animations and effects for plant growth
@@ -48,7 +48,7 @@ Tab Garden is a Chrome extension that gamifies your browsing experience by trans
 
 ## 🚀 Features
 
-### 🌱 **Digital Garden Experience**
+### **Digital Garden Experience**
 - Replace boring new tab page with a vibrant garden visualization
 - Each open browser tab becomes a unique plant in your garden
 - Real-time updates as you browse and interact with websites
@@ -59,7 +59,7 @@ Tab Garden is a Chrome extension that gamifies your browsing experience by trans
 - **Visual Progression**: Size, brightness, and effects increase with growth
 - **Golden Aura**: Special effects for mature plants (Level 4-5)
 
-### 🎭 **Dynamic Plant Types**
+### **Dynamic Plant Types**
 Different websites spawn different plant types based on their domain:
 
 | Plant | Websites | Appearance |
@@ -73,7 +73,7 @@ Different websites spawn different plant types based on their domain:
 | 🎋 Bamboo | Reddit, Forums | Flexible green stalks |
 | 🌱 Sapling | All other sites | Generic young plant |
 
-### 💫 **Advanced Features**
+###  **Advanced Features**
 - **Health System**: Plants wilt after 24 hours of inactivity
 - **Tab Overlay**: Tiny plant indicator on each webpage
 - **Growth Animations**: Smooth transitions when plants level up
@@ -84,7 +84,7 @@ Different websites spawn different plant types based on their domain:
 
 ---
 
-## 🛠 Installation
+##  Installation
 
 ### Method 1: Load Unpacked Extension (Recommended)
 
@@ -118,9 +118,9 @@ Different websites spawn different plant types based on their domain:
 
 ---
 
-## 🌿 How It Works
+##  How It Works
 
-### 🔄 **Plant Lifecycle**
+###  **Plant Lifecycle**
 
 ```mermaid
 graph LR
@@ -132,7 +132,7 @@ graph LR
     F --> G[🏆 Ancient Plant]
 ```
 
-### 📈 **Growth Progression**
+### **Growth Progression**
 
 | Level | Name | Time Required | Visual Changes | Special Effects |
 |-------|------|---------------|----------------|-----------------|
@@ -142,7 +142,7 @@ graph LR
 | 4 | 🌺 Mature | 15-20 minutes | Large, golden border | Golden aura effect |
 | 5 | ⭐ Ancient | 20+ minutes | Largest size, glowing | Sparkle animations |
 
-### 🎯 **Interaction System**
+###  **Interaction System**
 
 - **Click Plants**: Switch to the corresponding browser tab
 - **Right-Click**: Context menu to close tabs
@@ -152,9 +152,9 @@ graph LR
 
 ---
 
-## 📱 Screenshots
+## Screenshots
 
-### 🏡 Main Garden View
+###  Main Garden View
 ```
 🌱 Tab Garden - Your Digital Oasis
 ┌─────────────────────────────────────────────────────────────┐
@@ -170,7 +170,7 @@ graph LR
 ```
 *Beautiful garden layout with plants representing your open tabs*
 
-### 🌱 Plant Growth Demonstration
+###  Plant Growth Demonstration
 ```
 Growth Progression System:
 🌱 Level 1 (Seedling)  →  🌿 Level 2 (Sprout)   →  🌳 Level 3 (Young)
@@ -182,7 +182,7 @@ Growth Progression System:
 ```
 *Visual progression showing how plants evolve with time*
 
-### 💫 Special Features Preview
+###  Special Features Preview
 ```
 Tab Overlays:          Growth Animations:       Statistics:
 ┌─────────────┐       🌱 → 🌿 → 🌳 → 🌺 → ⭐   📊 Garden Stats
@@ -195,7 +195,7 @@ Tab Overlays:          Growth Animations:       Statistics:
 
 ---
 
-## ⚡ Technical Details
+##  Technical Details
 
 ### 🏗 **Architecture**
 - **Manifest Version**: V3 (Latest Chrome Extension Standard)
@@ -204,7 +204,7 @@ Tab Overlays:          Growth Animations:       Statistics:
 - **Storage**: Local Chrome storage for plant data persistence
 - **Permissions**: Minimal required permissions for functionality
 
-### 📦 **File Structure**
+###  **File Structure**
 ```
 plant_extension/
 ├── 📄 manifest.json          # Extension configuration
@@ -220,7 +220,7 @@ plant_extension/
     └── icon128.png
 ```
 
-### 🔒 **Privacy & Security**
+###  **Privacy & Security**
 - **Local Storage Only**: All data stays on your device
 - **No External Servers**: No data transmitted to third parties
 - **Minimal Permissions**: Only requests necessary browser access
@@ -228,7 +228,7 @@ plant_extension/
 
 ---
 
-## 🎮 Usage Tips
+## Usage Tips
 
 ### 🏆 **Maximize Your Garden**
 1. **Visit Sites Regularly**: Keep plants healthy by returning to tabs
@@ -249,28 +249,28 @@ plant_extension/
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 We welcome contributions to make Tab Garden even better! Here's how you can help:
 
-### 🐛 **Bug Reports**
+###  **Bug Reports**
 - Use GitHub Issues to report bugs
 - Include browser version and steps to reproduce
 - Screenshots are always helpful
 
-### 💡 **Feature Requests**
+###  **Feature Requests**
 - Suggest new plant types or growth mechanics
 - Propose UI/UX improvements
 - Share ideas for gamification features
 
-### 🔧 **Development**
+###  **Development**
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
 4. Test thoroughly
 5. Submit a pull request
 
-### 📝 **Development Setup**
+### **Development Setup**
 ```bash
 # Clone your fork
 git clone https://github.com/YOUR_USERNAME/plant_extension.git
@@ -287,7 +287,7 @@ git push origin feature-branch
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
@@ -305,7 +305,7 @@ copies of the Software...
 
 ---
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - **Chrome Extension APIs**: For providing the platform
 - **Web Animations API**: For smooth plant growth animations
@@ -315,7 +315,7 @@ copies of the Software...
 
 ---
 
-## 📞 Support
+##  Support
 
 ### 🔗 **Quick Links**
 - 🐛 [Report Bug](https://github.com/rishu685/plant_extension/issues)
@@ -323,7 +323,7 @@ copies of the Software...
 - 📖 [Documentation](https://github.com/rishu685/plant_extension/wiki)
 - 💬 [Discussions](https://github.com/rishu685/plant_extension/discussions)
 
-### ❓ **FAQ**
+### **FAQ**
 
 <details>
 <summary><strong>Why aren't my plants growing?</strong></summary>
@@ -353,7 +353,7 @@ Currently, plant types are automatically assigned based on domains. Custom plant
 
 <div align="center">
 
-### 🌟 **Star this repository if Tab Garden helped you cultivate better browsing habits!** 🌟
+###  **Star this repository if Tab Garden helped you cultivate better browsing habits!** 🌟
 
 **Made with 💚 for mindful browsing**
 
